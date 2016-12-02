@@ -8,14 +8,14 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <!-- <script type="text/javascript" src="http://www.google.com/jsapi"></script>-->
-    <script type="text/javascript" src="/../js/timeline.js"></script>
-    <link rel="stylesheet" type="text/css" href="/../css/timeline.css"></link>
+    <script type="text/javascript" src="js/timeline.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/timeline.css"></link>
      <script>
     $( document ).ready(function() {
         console.log( "document loaded " );
 
         $.ajax({
-        	  url: "http://home.sriramsv.com:5000/user/sriram?start=1479736800",
+        	  url: "http://home.sriramsv.com:5000/user/sriram",
         	  //data: data,
         	  success: function(data) {
                  console.log(data);
@@ -33,24 +33,24 @@
         timeline.draw(data);
 
               },
-              contentType : 'application/json'   
+              contentType : 'application/json'
         	  //dataType: "json"
         	});
     });
 
-	
-        
-      
-    
-    
-   
+
+
+
+
+
+
     </script>
-    
-    
-    
-    
-   
-   
+
+
+
+
+
+
 </head>
 
 
