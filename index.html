@@ -47,6 +47,14 @@
 		
 		
 		}		
+		
+		
+		 function loadingStat(){
+		   $("#dashboard-frame").hide();
+		   $("#contextify-frame").load("statchart.html");
+		
+		
+		}		
 </script>
 
 
@@ -185,7 +193,7 @@ background-color: rgb(255, 175, 26);
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Statistics<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="panels-wells.html">Daily</a>
+                                    <a href="javascript:loadingStat();">Daily</a>
                                 </li>
                                 <li>
                                     <a href="buttons.html">Weekly</a>
