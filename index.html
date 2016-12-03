@@ -16,6 +16,32 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.js"></script>
 
 
+<script type="text/javascript">
+ $( document ).ready(function() {
+        console.log("document loaded");
+        console.log("S");
+		
+		$.ajax({
+        	  url: "/getCurrentState",
+        	  //data: data,
+			  dataType:'json',
+            
+        	  success: function(data) {
+                //$("currentStateImg")
+				document.getElementById("currentStateImg").src="../img/sriramsv.jpg";
+               }
+			   
+			   });
+			   
+			   });
+			   
+
+
+</script>
+
+
+
+
 
 <script type="text/javascript">
 window.onload = function () {
@@ -118,6 +144,9 @@ background-color: rgb(255, 175, 26);
             </ul>
           </div>
           <div class="span6">
+		  <div class="pull-right">
+		  <a href='#' onclick='edit()'><img src="../img/sriramsv.jpg"" id="edit-save"/></a>
+		  </div>
           <!-- <ul class="inline stats">
                <li>
                <span class="glyphicon glyphicon-heart">Friends</span>
