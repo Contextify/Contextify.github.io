@@ -40,9 +40,13 @@
 		   $("#dashboard-frame").hide();
 		   $("#contextify-frame").load("prediction.html");
 		
+		}
+        function loadingTimeline(){
+		   $("#dashboard-frame").hide();
+		   $("#contextify-frame").load("timeline.html");
 		
 		
-		}	   
+		}		
 </script>
 
 
@@ -164,10 +168,10 @@ background-color: rgb(255, 175, 26);
                             <a href="javascript:loadingPredictionFrames();"><i class="fa fa-edit fa-fw"></i>Where Am I Next ?</a>
                         </li>
                         <li class="active">
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Timeline<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
+                            <a href="javascript:loadingTimeline();"><i class="fa fa-bar-chart-o fa-fw"></i>Timeline<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
                             <ul class="nav nav-second-level collapse in" aria-expanded="true" style="">
                                 <li>
-                                    <a href="flot.html">Daily </a>
+                                    <a href="javascript:loadingTimeline();">Daily </a>
                                 </li>
                                 <li>
                                     <a href="morris.html">Weekly</a>
