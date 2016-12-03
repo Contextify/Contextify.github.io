@@ -1,0 +1,53 @@
+
+<html>
+
+
+<script type="text/javascript">
+ $( document ).ready(function() {
+        console.log("document loaded");
+        console.log("S");
+		
+		$.ajax({
+        	  url: "/getCurrentState",
+        	  //data: data,
+			  dataType:'json',
+            
+        	  success: function(data) {
+                //$("currentStateImg")
+				//document.getElementById("currentStateImg").src="../img/home.png";
+               }
+			   
+			   });
+			   
+			   
+		  
+			
+	
+});
+</script>
+
+
+<div class="row-fluid" style="padding-top:10px">
+			<div class="span2"><div class="pull-left col-md-4"> <img src="../img/whereAmI.png" class="img-polaroid"/> </div></div>
+			<div class="col-md-4">
+             <div id="datetimepicker4" class="input-append">
+                <input data-format="yyyy-MM-dd" type="text"></input>
+                 <span class="add-on">
+                   <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                   </i>
+                 </span>
+             </div>
+            </div>
+			
+			<div class="col-md-4">
+               <div id="datetimepicker3" class="input-append">
+                 <input data-format="hh:mm:ss" type="text"></input>
+                  <span class="add-on">
+                   <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                </i>
+              </span>
+             </div>
+          </div>
+<div>
+
+</html>
