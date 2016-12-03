@@ -1,10 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/>
+<script src="js/src/jquery.datetimepicker.js"></script>
 
-<html>
+
+<style type="text/css">
+
+.custom-date-style {
+	background-color: red !important;
+}
+
+.input{	
+}
+.input-wide{
+	width: 500px;
+}
+
+</style>
 
 
 <script type="text/javascript">
  $( document ).ready(function() {
-        console.log("document loaded");
+        console.log("document loaded oki okeiejijrfjerjj");
         console.log("S");
 		
 		$.ajax({
@@ -19,37 +38,28 @@
 			   
 			   });
 			   
-			   
+		$('#datetimepicker3').datetimepicker({
+	inline:true
+});	   
 		  
-			
+	$('#datetimepicker_dark').datetimepicker({theme:'dark'})		
 	
 });
 </script>
 
-
+</head>
+<body>
 <div class="row-fluid" style="padding-top:10px">
 			<div class="span4"><div class="center-aligned"> <img src="img/predictionWAI.png" > </div></div>
 			<div class="row">
-			<div >
-             <div id="datetimepicker4" class="input-append">
-			 
-                <input data-format="yyyy-MM-dd" type="text"></input>
-                 <span class="add-on">
-                   <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                   </i>
-                 </span>
-             </div>
-            </div>
-			</div>
-			<div class="row">
-               <div id="datetimepicker3" class="input-append">
-                 <input data-format="hh:mm:ss" type="text"></input>
-                  <span class="add-on">
-                   <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                </i>
-              </span>
-             </div>
-          </div>
+			
+			<input type="text" id="datetimepicker3"/><input type="button" 
+			onclick="$('#datetimepicker3').datetimepicker({value:'2011/12/11 12:00'})" value="set inline value 2011/12/11 12:00"/><br><br>
+			
+			
+			
+			
+			
 <div>
-
+</body>
 </html>
