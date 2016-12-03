@@ -76,9 +76,7 @@ window.onload = function () {
 	});
     $.getJSON("https://home.sriramsv.com:5000/user/Sriram/states", function (data) {
                 dataPoints=[]
-
                 for (var i = 0; i < data.length; i++) {
-
                     dataPoints.push({ name: data[i].State, y: data[i].Percent });
                 }
                 chart.options.data[0].dataPoints = dataPoints;
@@ -89,22 +87,18 @@ window.onload = function () {
 .well{
 background-color: rgb(255, 175, 26);
 }
-
 .form-group input[type="checkbox"] {
     display: none;
 }
-
 .form-group input[type="checkbox"] + .btn-group > label span {
     width: 20px;
 }
-
 .form-group input[type="checkbox"] + .btn-group > label span:first-child {
     display: none;
 }
 .form-group input[type="checkbox"] + .btn-group > label span:last-child {
     display: inline-block;
 }
-
 .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
     display: inline-block;
 }
@@ -624,3 +618,4 @@ background-color: rgb(255, 175, 26);
 </div>
 </body>
 </html>
+
