@@ -21,7 +21,7 @@ loadData:function(){
     // specify options
         var options = {
           "width":  "100%",
-          "height": "100%",
+          "height": "50%",
            // optional
         };
 

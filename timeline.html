@@ -8,7 +8,7 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/timeline.js"></script>
-     <script type="text/javascript" src="js/timelineImpl.js"></script>
+    <script type="text/javascript" src="js/timelineImpl.js"></script>
     <link rel="stylesheet" type="text/css" href="css/timeline.css"></link>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
      <script>
@@ -16,11 +16,8 @@
     </script>
 </head>
   <body>
-  <!--<div class="container">
-    <!-- <div class="row">  -->
-             <!-- <div class="col-md-4"></div>  -->
-<!--
-<div style="padding-left:75px;padding-top:10px">
+ 
+<div id="checkY" style="padding-left:75px;padding-top:1px">
 <div class="input-group">
       <span class="input-group-btn ">
        <button type="button" class="btn btn-danger btn-lg" style="color:black" onclick="javascript:timelineImpl.zoom(0.4)";>
@@ -30,13 +27,10 @@
             <span class="glyphicon glyphicon-zoom-out"></span> 
       </button>
       
-      </span>
-
-      <span class="input-group-btn">
-<button type="button" class="btn btn-primary btn-lg" style="color:black" onclick="javascript:timelineImpl.move(-0.2);";>
+<button type="button" class="btn btn-primary btn-lg" style="color:black;background-color:#99bbff" onclick="javascript:timelineImpl.move(-0.2);";>
             <span class="glyphicon glyphicon-arrow-left"></span> 
       </button>
-      <button type="button" class="btn btn-primary btn-lg" style="color:black" onclick="javascript:timelineImpl.moveToCurrentTime();";>
+      <button type="button" class="btn btn-primary btn-lg" style="color:black;background-color:#99bbff" onclick="javascript:timelineImpl.moveToCurrentTime();";>
             <span class="glyphicon glyphicon-time"></span> 
       </button>
       <button type="button" class="btn btn-primary btn-lg" style="color:black" onclick="javascript:timelineImpl.move(0.2)";>
@@ -44,8 +38,9 @@
       </button>
   </span>
 </div> 
--->
-<div style="padding-top:10px">    
+</div>
+
+<div style="padding-top:1px">    
     <!-- <input type="button" value="Adjust visible range to accommodate all events" title="Adjust visible range to accommodate all events" onclick="javascript:timelineImpl.adjustVisibleTimeRangeToAccommodateAllEvents();"> -->
     
 

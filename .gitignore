@@ -2,3 +2,5 @@ html/_sites
 default.conf
 index.html
 timeline.html
+timezone.html
+*.js

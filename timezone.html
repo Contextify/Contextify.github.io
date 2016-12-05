@@ -5,14 +5,13 @@
     <style>
       body {font: 10pt arial;}
     </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="js/timelineImpl.js"></script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 
-<div class="row"  >
-<div class="row" style="padding-top:20px;padding:bottom:20px">
-<div style="padding-left:5px;padding-top:10px">
+
+<div style="padding-left:75px;padding-top:1px">
 <div class="input-group">
       <span class="input-group-btn ">
        <button type="button" class="btn btn-danger btn-lg" style="color:black" onclick="javascript:timelineImpl.zoom(0.4)";>
@@ -22,16 +21,16 @@
             <span class="glyphicon glyphicon-zoom-out"></span> 
       </button>
       
-      <!-- </span> -->
+      </span>
 
-      <!-- <span class="input-group-btn"> -->
-      <button type="button" class="btn btn-info btn-lg" style="color:black;background-color:#b3ccff" onclick="javascript:timelineImpl.move(-0.2);";>
+      <span class="input-group-btn">
+<button type="button" class="btn btn-primary btn-lg" style="color:black;background-color:#99bbff" onclick="javascript:timelineImpl.move(-0.2);";>
             <span class="glyphicon glyphicon-arrow-left"></span> 
       </button>
-      <button type="button" class="btn btn-info btn-lg" style="color:black;background-color:#b3ccff" onclick="javascript:timelineImpl.moveToCurrentTime();";>
+      <button type="button" class="btn btn-primary btn-lg" style="color:black;background-color:#99bbff" onclick="javascript:timelineImpl.moveToCurrentTime();";>
             <span class="glyphicon glyphicon-time"></span> 
       </button>
-      <button type="button" class="btn btn-info btn-lg" style="color:black;background-color:#b3ccff" onclick="javascript:timelineImpl.move(0.2)";>
+      <button type="button" class="btn btn-primary btn-lg" style="color:black" onclick="javascript:timelineImpl.move(0.2)";>
             <span class="glyphicon glyphicon-arrow-right"></span> 
       </button>
   </span>
@@ -39,7 +38,9 @@
 </div>
 
 
-                                <div id="timez"style="height:100%; width: 100%;padding-top:80px;padding-left:50px"> <iframe style="height:450px;width:1100px" src="https://contextify.github.io/timeline.html"></iframe></div>
+<div>
+
+                                <div id="timez"style="height:75%; width: 100%;padding-top:1px;padding-left:50px"> <iframe style="height:450px;width:1100px" src="https://contextify.github.io/timeline.html"></iframe></div>
 </div>
 <!--
 <div class="panel panel-default">
