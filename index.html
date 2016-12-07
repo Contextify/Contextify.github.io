@@ -32,29 +32,78 @@
         	  success: function(data) {
               console.log(JSON.stringify(data));
 	    
-        document.getElementById("CurrentState").innerHTML = data.State;
-		if(data.State=="Home")
-            document.getElementById("currentStateImg").addClass="glyphicon glyphicon-home huge";
-        else if(data.State=="Work")
-			document.getElementById("currentStateImg").addClass="glyphicon glyphicon-businessman huge";
-		else if(data.State=="Outside")
-			document.getElementById("currentStateImg").addClass="glyphicon glyphicon-cars huge";
-        else if(data.State=="Class")
-			document.getElementById("currentStateImg").addClass="glyphicon glyphicon-education huge";
-		else if(data.State=="NearHome"){
-			$("#currentStateImg").addClass("glyphicon glyphicon-home  glyphicon-user huge");
-			
-
-}
-
-        else if(data.State=="Library")
-			document.getElementById("currentStateImg").addClass="glyphicon glyphicon-book-open huge";
-
+            document.getElementById("CurrentState").innerHTML = data.State;
+		    loadImage("currentStateImg",data.State);
                }
 
 			   });
 
+var currentdate = new Date(); 
+
+ var datetime = "Last Sync: " + currentdate.getDate() + "/"+  (parseInt(currentdate.getMonth())    + 1)
+   + "/" + currentdate.getFullYear() + " @ "  
+   + currentdate.getHours() + ":"  
+   + currentdate.getMinutes() + ":" + currentdate.getSeconds(); 
+
+
+var weekday = new Array(7);
+weekday[0]=  "Sunday";
+weekday[1] = "Monday";
+weekday[2] = "Tuesday";
+weekday[3] = "Wednesday";
+weekday[4] = "Thursday";
+weekday[5] = "Friday";
+weekday[6] = "Saturday";
+
+var day = weekday[currentdate.getDay()];
+var hour=currentdate.getHours();
+console.log("currentdate"+currentdate);
+
+
+         $.ajax({
+        	  url: "https://home.sriramsv.com:5000/user/Sriram/prob/state?day="+day,
+        	  //data: data,
+			  dataType:'json',
+
+        	  success: function(data) {
+              console.log(JSON.stringify(data));
+	         var result=data;
+             var arr="result."+day;
+			 console.log("arr"+arr);
+            document.getElementById("predCurrentState").innerHTML = arr[hour];
+		    loadImage("predCurrentStateImg",data.State);
+               }
+
 			   });
+
+
+            
+
+
+			   });
+
+
+
+        
+
+
+        function loadImage(id,state){
+        if(state=="Home")
+            $("#"+id).addClass="glyphicon glyphicon-home huge";
+        else if(state=="Work")
+			 $("#"+id)="glyphicon glyphicon-businessman huge";
+		else if(state=="Outside")
+			 $("#"+id)="glyphicon glyphicon-cars huge";
+        else if(state=="Class")
+			 $("#"+id)="glyphicon glyphicon-education huge";
+		else if(state=="NearHome")
+			$("#"+id).addClass("glyphicon glyphicon-home  glyphicon-user huge");
+	    else if(state=="Library")
+			 $("#"+id)="glyphicon glyphicon-book-open huge";
+
+
+        }
+          
 
 
 		function loadingPredictionFrames(){
@@ -287,16 +336,14 @@ background-color: rgb(255, 175, 26);
                                  <div class="pull-right span5" id="currentStateImg"/>
 		                        </div>
                                 </div>
-                                <div class="col-xs-9 text-right">
-                                   
-                                </div>
+                               
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
                                 <span class="pull-left"><b>Current State</b></span>
                                 <div><h1> <span id="CurrentState" class="medium"> </span></h1> </div>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                
                                 <div class="clearfix"></div>
                             </div>
                         </a>
@@ -306,19 +353,19 @@ background-color: rgb(255, 175, 26);
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
+                               
                                 <div class="col-xs-3">
-                                    <i id="currentStateImg"></i>
+                                 <!-- <i class="" id="currentStateImg"></i>  -->
+                                 <div class="pull-right span5" id="predCurrentStateImg"/>
+		                        </div>
                                 </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>New Tasks!</div>
-                                </div>
+                                
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-left">Predicted Current State</span>
+                                <div><h1> <span id="predCurrentState" class="medium"> PCS</span></h1> </div>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
@@ -328,18 +375,18 @@ background-color: rgb(255, 175, 26);
                     <div class="panel panel-yellow">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="glyphicon glyphicon-globe huge"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
-                                </div>
+                               
+                                <div class="col-xs-3"></div>
+                                 <!-- <i class="" id="currentStateImg"></i>  -->
+                                 <div class="pull-right span5" id="currentStateImg"></div>
+		                        
+                               
                             </div>
-                        </div>
+                            </div>
+                        
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Predicted Current State</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
