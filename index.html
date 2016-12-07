@@ -25,7 +25,7 @@
         console.log("S");
 
 		$.ajax({
-        	  url: "https://home.sriramsv.com:5000/user/Sriram/CurrentState",
+        	  url: "https://home.sriramsv.com:5000/user/Sriram/currentstate",
         	  //data: data,
 			  dataType:'json',
 
@@ -34,17 +34,21 @@
 	    
         document.getElementById("CurrentState").innerHTML = data.State;
 		if(data.State=="Home")
-            document.getElementById("currentStateImg").src="../img/home.png";
+            document.getElementById("currentStateImg").addClass="glyphicon glyphicon-home huge";
         else if(data.State=="Work")
-			document.getElementById("currentStateImg").src="../img/work.png";
+			document.getElementById("currentStateImg").addClass="glyphicon glyphicon-businessman huge";
 		else if(data.State=="Outside")
-			document.getElementById("currentStateImg").src="../img/outside.png";
+			document.getElementById("currentStateImg").addClass="glyphicon glyphicon-cars huge";
         else if(data.State=="Class")
-			document.getElementById("currentStateImg").src="../img/class.png";
-		else if(data.State=="NearHome")
-			document.getElementById("currentStateImg").src="../img/nearHome.png";
+			document.getElementById("currentStateImg").addClass="glyphicon glyphicon-education huge";
+		else if(data.State=="NearHome"){
+			$("#currentStateImg").addClass("glyphicon glyphicon-user huge");
+			$("#currentStateImg").addClass("glyphicon glyphicon-home huge");
+
+}
+
         else if(data.State=="Library")
-			document.getElementById("currentStateImg").src="../img/Library.png";
+			document.getElementById("currentStateImg").addClass="glyphicon glyphicon-book-open huge";
 
                }
 
@@ -102,7 +106,7 @@ window.onload = function () {
 	}
 	]
 	});
-    $.getJSON("https://home.sriramsv.com:5000/user/Sriram/states", function (data) {
+    $.getJSON("https://home.sriramsv.com:5000/user/Sriram/state", function (data) {
                 dataPoints=[]
                 for (var i = 0; i < data.length; i++) {
                     dataPoints.push({ name: data[i].State, y: data[i].Percent });
@@ -279,9 +283,8 @@ background-color: rgb(255, 175, 26);
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                 <!-- <i class="glyphicon glyphicon-globe huge"></i> -->
-                                 <div class="pull-right span2">
-                                      <img src="" id="currentStateImg"/>
+                                 <!-- <i class="" id="currentStateImg"></i>  -->
+                                 <div class="pull-right span5" id="currentStateImg"/>
 		                        </div>
                                 </div>
                                 <div class="col-xs-9 text-right">
@@ -304,7 +307,7 @@ background-color: rgb(255, 175, 26);
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="glyphicon glyphicon-globe huge"></i>
+                                    <i id="currentStateImg"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">12</div>
