@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<!-- <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/> -->
+ 
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.css">
+
+
+
+<script src="js/src/moment-with-locales.js"></script> 
+<script src="js/src/moment.js"></script> 
+<script src="js/src/bootstrap-datetimepicker.js"></script>
+
+
+<style type="text/css">
+
+.custom-date-style {
+	background-color: red !important;
+}
+
+.input{	
+}
+.input-wide{
+	width: 500px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.bix-date{
+ background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    display: block;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+
+
+}
+
+</style>
+
+
+<script type="text/javascript">
+ $( document ).ready(function() {
+        console.log("document loaded oki okeiejijrfjerjj");
+        console.log("S");
+		 $('#datetimepicker1').datetimepicker();
+		$.ajax({
+        	  url: "/getCurrentState",
+        	  //data: data,
+			  dataType:'json',
+            
+        	  success: function(data) {
+                //$("currentStateImg")
+				//document.getElementById("currentStateImg").src="../img/home.png";
+               }
+			   
+			   });
+			    
+               
+            
+       
+			   
+			   });
+		
+</script>
+
+</head>
+
+<body >
+
+   
+<div class="container">
+    <div class="row"> 
+             <div class="col-md-4"></div> 
+             <div class="col-md-4"><img class="center-block" src="img/predictionWAI.png" /></div> 
+             <div class="col-md-4"></div> 
+			
+	</div>
+
+<div class="row" style="padding-top: 40px;">
+ <div class="col-md-2 col-md-offset-3">
+	<div class="container">
+        <div class="row">
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+ </div> 
+    
+ <div class="row" style="padding-top: 40px;"> 
+             <div class="col-md-4"></div> 
+             <div class="col-md-4"><button type="button" class="btn btn-primary btn-block">Predict</button></div> 
+             <div class="col-md-4"></div> 
+</div>    
+    
+
+			
+</body>

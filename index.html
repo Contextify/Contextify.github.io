@@ -22,41 +22,42 @@
  $( document ).ready(function() {
         console.log("document loaded");
         console.log("S");
-		
+
 		$.ajax({
-        	  url: "/getCurrentState",
+        	  url: "https://home.sriramsv.com:5000/user/Sriram/CurrentState",
         	  //data: data,
-			  dataType:'json',
-            
+			  dataType:'jsonp',
+
         	  success: function(data) {
-                //$("currentStateImg")
-				document.getElementById("currentStateImg").src="../img/sriramsv.jpg";
+              console.log(data.CurrentState.State);
+			//document.getElementById("currentStateImg").src="../img/sriramsv.jpg";
+        document.getElementById("CurrentState").innerHTML = data.CurrentState.State;
                }
-			   
+
 			   });
-			   
+
 			   });
-			   
-			   
+
+
 		function loadingPredictionFrames(){
 		   $("#dashboard-frame").hide();
 		   $("#contextify-frame").load("prediction.html");
-		
+
 		}
         function loadingTimeline(){
 		   $("#dashboard-frame").hide();
 		   $("#contextify-frame").load("timezone.html");
-		
-		
-		}		
-		
-		
+
+
+		}
+
+
 		 function loadingStat(){
 		   $("#dashboard-frame").hide();
 		   $("#contextify-frame").load("statchart.html");
-		
-		
-		}		
+
+
+		}
 </script>
 
 
@@ -155,13 +156,13 @@ background-color: rgb(255, 175, 26);
               <li><i class="icon-globe"></i> http://sriramsv.com</li>
             </ul>
           </div>
-          
+
 		  <div class="pull-right span2">
 		  <img src="../img/home.png" id="currentStateImg"/>
 		  </div>
-          
-        </div>  
-		
+
+        </div>
+
       </div>
       <!--Body content-->
     </div>
@@ -173,7 +174,7 @@ background-color: rgb(255, 175, 26);
 					    <li>
                             <a href="loadingContextifyFrames()"><i class="fa fa-edit fa-fw"></i>DashBoard</a>
                         </li>
-						
+
 						<li>
                             <a href="javascript:loadingPredictionFrames();"><i class="fa fa-edit fa-fw"></i>Where Am I Next ?</a>
                         </li>
@@ -190,7 +191,7 @@ background-color: rgb(255, 175, 26);
                             <!-- /.nav-second-level -->
                         </li>
 
-                       
+
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Statistics<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
                             <ul class="nav nav-second-level collapse">
@@ -245,10 +246,10 @@ background-color: rgb(255, 175, 26);
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
- 
+
  </div>
 
-			
+
     <div id="page-wrapper" style="min-height: 216px;">
 	<div id="contextify-frame">
 	                 </div>
@@ -269,7 +270,7 @@ background-color: rgb(255, 175, 26);
                                     <i class="glyphicon glyphicon-globe huge"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="medium">NearHome</div>
+                                    <div <span id="CurrentState" class="medium">NearHome </span> </div>
                                     <div class="medium">Current State</div>
                                 </div>
                             </div>
@@ -433,7 +434,7 @@ background-color: rgb(255, 175, 26);
 
                                     </ul>
                                 </div>
-                                
+
 
                             </div>-->
                         </div>

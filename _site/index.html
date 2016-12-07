@@ -7,6 +7,8 @@
  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.min.css">
@@ -14,6 +16,51 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.js"></script>
+
+
+<script type="text/javascript">
+ $( document ).ready(function() {
+        console.log("document loaded");
+        console.log("S");
+
+		$.ajax({
+        	  url: "https://home.sriramsv.com:5000/user/Sriram/CurrentState",
+        	  //data: data,
+			  dataType:'jsonp',
+
+        	  success: function(data) {
+              console.log(data.CurrentState.State);
+			//document.getElementById("currentStateImg").src="../img/sriramsv.jpg";
+        document.getElementById("CurrentState").innerHTML = data.CurrentState.State;
+               }
+
+			   });
+
+			   });
+
+
+		function loadingPredictionFrames(){
+		   $("#dashboard-frame").hide();
+		   $("#contextify-frame").load("prediction.html");
+
+		}
+        function loadingTimeline(){
+		   $("#dashboard-frame").hide();
+		   $("#contextify-frame").load("timezone.html");
+
+
+		}
+
+
+		 function loadingStat(){
+		   $("#dashboard-frame").hide();
+		   $("#contextify-frame").load("statchart.html");
+
+
+		}
+</script>
+
+
 
 
 
@@ -43,9 +90,7 @@ window.onload = function () {
 	});
     $.getJSON("https://home.sriramsv.com:5000/user/Sriram/states", function (data) {
                 dataPoints=[]
-
                 for (var i = 0; i < data.length; i++) {
-
                     dataPoints.push({ name: data[i].State, y: data[i].Percent });
                 }
                 chart.options.data[0].dataPoints = dataPoints;
@@ -56,22 +101,18 @@ window.onload = function () {
 .well{
 background-color: rgb(255, 175, 26);
 }
-
 .form-group input[type="checkbox"] {
     display: none;
 }
-
 .form-group input[type="checkbox"] + .btn-group > label span {
     width: 20px;
 }
-
 .form-group input[type="checkbox"] + .btn-group > label span:first-child {
     display: none;
 }
 .form-group input[type="checkbox"] + .btn-group > label span:last-child {
     display: inline-block;
 }
-
 .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
     display: inline-block;
 }
@@ -97,12 +138,10 @@ background-color: rgb(255, 175, 26);
           </button> -->
           <a class="navbar-brand" style="font-size: 40px !important;padding-left:20px" "href="#">Contextify</a>
         </div>
-
       </div>
     </nav>
 </div>
-
-  <div class="row">
+   <div class="row">
     <div style="padding-top: 50px;">
       <div class="well well-small clearfix">
         <div class="row-fluid">
@@ -117,54 +156,47 @@ background-color: rgb(255, 175, 26);
               <li><i class="icon-globe"></i> http://sriramsv.com</li>
             </ul>
           </div>
-          <div class="span6">
-          <!-- <ul class="inline stats">
-               <li>
-               <span class="glyphicon glyphicon-heart">Friends</span>
 
-              </li>
-              <li>
-                 <span class="glyphicon glyphicon-heart">354</span>
-                 Followers
-              </li>
-               <li>
-                 <span>186</span>
-                 Photos
-              </li>
-          </ul> -->
-            <div><!--/span6-->
-            </div><!--/row-->
+		  <div class="pull-right span2">
+		  <img src="../img/home.png" id="currentStateImg"/>
+		  </div>
+
+        </div>
+
       </div>
       <!--Body content-->
     </div>
  </div>
-</div>
-</div>
 <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav in" id="side-menu">
 
+					    <li>
+                            <a href="loadingContextifyFrames()"><i class="fa fa-edit fa-fw"></i>DashBoard</a>
+                        </li>
+
+						<li>
+                            <a href="javascript:loadingPredictionFrames();"><i class="fa fa-edit fa-fw"></i>Where Am I Next ?</a>
+                        </li>
                         <li class="active">
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>User's <span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
+                            <a href="javascript:loadingTimeline();"><i class="fa fa-bar-chart-o fa-fw"></i>Timeline<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
                             <ul class="nav nav-second-level collapse in" aria-expanded="true" style="">
                                 <li>
-                                    <a href="flot.html">X</a>
+                                    <a href="javascript:loadingTimeline();">Daily </a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Y</a>
+                                    <a href="morris.html">Weekly</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
 
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Target Index</a>
-                        </li>
+
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Statistics<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="panels-wells.html">Daily</a>
+                                    <a href="javascript:loadingStat();">Daily</a>
                                 </li>
                                 <li>
                                     <a href="buttons.html">Weekly</a>
@@ -179,7 +211,7 @@ background-color: rgb(255, 175, 26);
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Suggestions<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Notifications<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
                                     <a href="blank.html">Interest1</a>
@@ -190,12 +222,38 @@ background-color: rgb(255, 175, 26);
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+						<li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Keep List<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a href="blank.html">Home</a>
+                                </li>
+                                <li>
+                                    <a href="login.html">Class</a>
+                                </li>
+								<li>
+                                    <a href="login.html">Library</a>
+                                </li>
+								<li>
+                                    <a href="login.html">Outside</a>
+                                </li>
+								<li>
+                                    <a href="login.html">NearHome</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
-            </div>
+
+ </div>
+
 
     <div id="page-wrapper" style="min-height: 216px;">
+	<div id="contextify-frame">
+	                 </div>
+	<div id="dashboard-frame" >
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Dashboard</h1>
@@ -212,7 +270,7 @@ background-color: rgb(255, 175, 26);
                                     <i class="glyphicon glyphicon-globe huge"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="medium">NearHome</div>
+                                    <div <span id="CurrentState" class="medium">NearHome </span> </div>
                                     <div class="medium">Current State</div>
                                 </div>
                             </div>
@@ -351,6 +409,39 @@ background-color: rgb(255, 175, 26);
                         <div class="panel-body">
                             <div class="row">
                                 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+ <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Timeline
+                           <!-- <div class="pull-right">
+                                <!--<div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Today</a>
+                                        </li>
+                                        <li><a href="#">Weekly</a>
+                                        </li>
+                                        <li><a href="#">Monthly</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+
+                            </div>-->
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:850px;width:790px">
+                            <div class="row">
+                                <div id="timez"style="height: 500px; width: 100%;"> <iframe style="height:800px;width:750px"src="https://contextify.github.io/timezone.html"></iframe></div>
                             </div>
                             <!-- /.row -->
                         </div>
@@ -593,6 +684,7 @@ background-color: rgb(255, 175, 26);
                     <!-- /.panel .chat-panel -->
                 </div>
                 <!-- /.col-lg-4 -->
+				</div>
             </div>
             <!-- /.row -->
         </div>
