@@ -27,12 +27,12 @@
 		$.ajax({
         	  url: "https://home.sriramsv.com:5000/user/Sriram/CurrentState",
         	  //data: data,
-			  dataType:'jsonp',
+			  dataType:'json',
 
         	  success: function(data) {
-              console.log(data.CurrentState.State);
+              console.log(JSON.stringify(data));
 			//document.getElementById("currentStateImg").src="../img/sriramsv.jpg";
-        document.getElementById("CurrentState").innerHTML = data.CurrentState.State;
+        document.getElementById("CurrentState").innerHTML = data.State;
                }
 
 			   });
@@ -159,6 +159,8 @@ background-color: rgb(255, 175, 26);
           </div>
 
 		  <div class="pull-right span2">
+             <div><h1> <span id="CurrentState" class="medium"> </span></h1> </div>
+                                   
 		  <img src="../img/home.png" id="currentStateImg"/>
 		  </div>
 
@@ -271,8 +273,7 @@ background-color: rgb(255, 175, 26);
                                     <i class="glyphicon glyphicon-globe huge"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div <span id="CurrentState" class="medium">NearHome </span> </div>
-                                    <div class="medium">Current State</div>
+                                   
                                 </div>
                             </div>
                         </div>
