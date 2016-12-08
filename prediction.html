@@ -56,24 +56,35 @@
  $( document ).ready(function() {
         console.log("document loaded oki okeiejijrfjerjj");
         console.log("S");
-		 $('#datetimepicker1').datetimepicker();
-		$.ajax({
-        	  url: "/getCurrentState",
+		// var x=$('#datetimepicker1').datetimepicker();
+$("#alertINfo").hide();
+
+daySelect = document.getElementById('hour');
+for(var i=0;i<24;i++)
+daySelect.options[daySelect.options.length] = new Option(i,i);
+//alert(daySelect.innerHTML)
+        // console.log("x is" +JSON.stringify(x));
+		 
+			
+});   
+             
+
+ function onClickofPredict(){
+
+          $.ajax({
+        	  url: "https://home.sriramsv.com:5000/user/Sriram/nextstate?day="+$("#dayOfTheWeek").val()+"&hour="+$("#hour").val(),
         	  //data: data,
 			  dataType:'json',
             
         	  success: function(data) {
-                //$("currentStateImg")
-				//document.getElementById("currentStateImg").src="../img/home.png";
+                document.getElementById("currUserId").innerHTML=data.CurrentState;   
+				document.getElementById("userId").innerHTML=data.NextState;
+$("#alertINfo").show();
                }
 			   
 			   });
-			    
-               
-            
-       
-			   
-			   });
+}
+
 		
 </script>
 
@@ -90,7 +101,14 @@
 			
 	</div>
 
-<div class="row" style="padding-top: 40px;">
+ <div class="row"> 
+             <div class="col-md-4"></div> 
+             <div class="col-md-4"><h1>Where Am I Next ???</h1></div> 
+             <div class="col-md-4"></div> 
+			
+	</div>
+
+<!--<div class="row" style="padding-top: 40px;">
  <div class="col-md-2 col-md-offset-3">
 	<div class="container">
         <div class="row">
@@ -107,14 +125,62 @@
         </div>
     </div>
   </div>
- </div> 
+ </div> -->
+
+<div class="row" style="padding-top: 40px;padding-bottom:50px">
+ <div class="col-md-2 col-md-offset-3">
+	<div class="container">
+        <div class="row">
+            <div class='col-sm-6'>
+<div><h4>Select Day of the Week :</h4></div>
+<select class="selectpicker btn btn-primary dropdown-toggle" id="dayOfTheWeek"> 
+  <option>Sunday</option>
+  <option>Monday</option>
+  <option>Tuesday</option>
+<option>Wednesday</option>
+<option>Thursday</option>
+<option>Friday</option>
+<option>Saturday</option>
+</select>
+
+ 
+
+
+
+			</div>
+        </div>
+	</div>	
+  </div>
+
+<div class="col-md-2 col-md-offset-3">
+	<div class="container">
+        <div class="row">
+            <div class='col-sm-6'>
+<div><h4>Select Hour :</h4></div>
+<select class="selectpicker btn btn-primary dropdown-toggle" id="hour"> 
+  
+</select>
+
+ 
+
+
+
+			</div>
+        </div>
+	</div>	
+  </div>
+</div>
     
  <div class="row" style="padding-top: 40px;"> 
              <div class="col-md-4"></div> 
-             <div class="col-md-4"><button type="button" class="btn btn-primary btn-block">Predict</button></div> 
+             <div class="col-md-4"><button type="button" class="btn btn-success btn-block" onClick="javascript:onClickofPredict()">Predict</button></div> 
              <div class="col-md-4"></div> 
 </div>    
-    
-
+   
+<div class="row" style="padding-top:40px;" id="alertINfo">
+<div class="alert alert-info center-block">
+<h1><strong>Current State : <span id="currUserId"></span> <span class="pull-right">Next State : <span id="userId"></span></span></strong> </h1>
+</div> 
+</div>
 			
 </body>
