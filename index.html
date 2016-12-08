@@ -17,13 +17,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.js"></script>
+<script src="js/src/moment.js"></script>
+<script src="js/src/moment-with-locales.js"></script>
 
 
 <script type="text/javascript">
  $( document ).ready(function() {
         console.log("document loaded");
         console.log("S");
-
+		NotificationsPanel();
 		$.ajax({
         	  url: "https://home.sriramsv.com:5000/user/Sriram/currentstate",
         	  //data: data,
@@ -66,12 +68,14 @@ console.log("currentdate"+currentdate);
 			  dataType:'json',
 
         	  success: function(data) {
-              console.log(JSON.stringify(data));
+              //console.log(JSON.stringify(data));
 	         var result=data;
-             var arr="result."+day;
-			 console.log("arr"+arr);
-            document.getElementById("predCurrentState").innerHTML = arr[hour];
-		    loadImage("predCurrentStateImg",data.State);
+             var x=data[hour];
+
+            document.getElementById("predCurrentState").innerHTML = x["State"];
+
+		    loadImage("predCurrentStateImg",x["State"]);
+            $("#predCurrentStateImg").addClass("glyphicon glyphicon-home huge"); // need to remove this
                }
 
 			   });
@@ -83,23 +87,58 @@ console.log("currentdate"+currentdate);
 			   });
 
 
+         function NotificationsPanel(){
 
-        
+                $.ajax({
+        	  url: "https://home.sriramsv.com:5000/user/sriram/latest?limit=10",
+        	  
+			  dataType:'json',
+
+        	  success: function(data) {
+              console.log(JSON.stringify(data));
+	          var result=data;
+                   for(var i=1;i<result.length;i++){
+                     $("#listItems").append("<li class='list-group-item'>"+result[i].State+"<div class='pull-right'>"+duration(result[i].End*1000)+"</div></li>");
+                   // console.log(duration(result[i].End*1000)+"result.length"+result[i].State);
+}
+//duration(then);
+            }});
+}
 
 
-        function loadImage(id,state){
-        if(state=="Home")
+                
+
+
+function duration(then){
+                //var currentTimeStamp=Math.ceil(new Date().valueOf()/1000);
+	
+var m = moment(then);
+return m.fromNow();
+//return moment.utc(moment(currentTimeStamp*1000).diff(moment(then))).format("HH:mm:ss");
+
+}
+
+function loadImage(id,state){
+        // console.log("id "+id+"state "+state); 
+        if(state=="Home"){
+           //console.log("*********????*********"+id);
             $("#"+id).addClass="glyphicon glyphicon-home huge";
+           //console.log("*********YYYYY*********"+id);
+
+			}
         else if(state=="Work")
-			 $("#"+id)="glyphicon glyphicon-businessman huge";
+			 $("#"+id).addClass="glyphicon glyphicon-businessman huge";
 		else if(state=="Outside")
-			 $("#"+id)="glyphicon glyphicon-cars huge";
+			 $("#"+id).addClass="glyphicon glyphicon-cars huge";
         else if(state=="Class")
-			 $("#"+id)="glyphicon glyphicon-education huge";
-		else if(state=="NearHome")
-			$("#"+id).addClass("glyphicon glyphicon-home  glyphicon-user huge");
+			 $("#"+id).addClass="glyphicon glyphicon-education huge";
+		else if(state=="NearHome"){
+            // console.log("******************"+id);
+			$("#"+id).addClass("glyphicon glyphicon-user huge");
+
+}
 	    else if(state=="Library")
-			 $("#"+id)="glyphicon glyphicon-book-open huge";
+			 $("#"+id).addClass="glyphicon glyphicon-book-open huge";
 
 
         }
@@ -365,7 +404,7 @@ background-color: rgb(255, 175, 26);
                         <a href="#">
                             <div class="panel-footer">
                                 <span class="pull-left">Predicted Current State</span>
-                                <div><h1> <span id="predCurrentState" class="medium"> PCS</span></h1> </div>
+                                <div><h1> <span id="predCurrentState" class="medium"></span></h1> </div>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
@@ -678,52 +717,8 @@ background-color: rgb(255, 175, 26);
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-bolt fa-fw"></i> Server Crashed!
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-warning fa-fw"></i> Server Not Responding
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
-                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-money fa-fw"></i> Payment Received
-                                    <span class="pull-right text-muted small"><em>Yesterday</em>
-                                    </span>
-                                </a>
+                            <div class="list-group" id="listItems">
+                               
                             </div>
                             <!-- /.list-group -->
                             <a href="#" class="btn btn-default btn-block">View All Alerts</a>
