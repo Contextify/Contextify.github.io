@@ -145,13 +145,22 @@ function loadImage(id,state){
           
 
 
+
+        function loadHomePage(){
+		   $("#dashboard-frame").show();
+		   $("#contextify-frame").hide();
+
+		}
+
 		function loadingPredictionFrames(){
 		   $("#dashboard-frame").hide();
+           $("#contextify-frame").show();
 		   $("#contextify-frame").load("prediction.html");
 
 		}
         function loadingTimeline(){
 		   $("#dashboard-frame").hide();
+		   $("#contextify-frame").show();
 		   $("#contextify-frame").load("timezone.html");
 
 
@@ -160,6 +169,7 @@ function loadImage(id,state){
 
 		 function loadingStat(){
 		   $("#dashboard-frame").hide();
+           $("#contextify-frame").show();
 		   $("#contextify-frame").load("statchart.html");
 
 
@@ -276,7 +286,7 @@ background-color: rgb(255, 175, 26);
                     <ul class="nav in" id="side-menu">
 
 					    <li>
-                            <a href="loadingContextifyFrames()"><i class="fa fa-edit fa-fw"></i>DashBoard</a>
+                            <a href="javascript:loadHomePage()"><i class="fa fa-edit fa-fw"></i>DashBoard</a>
                         </li>
 
 						<li>
@@ -284,14 +294,7 @@ background-color: rgb(255, 175, 26);
                         </li>
                         <li class="active">
                             <a href="javascript:loadingTimeline();"><i class="fa fa-bar-chart-o fa-fw"></i>Timeline<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
-                            <ul class="nav nav-second-level collapse in" aria-expanded="true" style="">
-                                <li>
-                                    <a href="javascript:loadingTimeline();">Daily </a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Weekly</a>
-                                </li>
-                            </ul>
+                           
                             <!-- /.nav-second-level -->
                         </li>
 
@@ -318,10 +321,10 @@ background-color: rgb(255, 175, 26);
                             <a href="#"><i class="fa fa-files-o fa-fw"></i>Notifications<span class="glyphicon glyphicon glyphicon-menu-down pull-right"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="blank.html">Interest1</a>
+                                    <a href="blank.html">Individual</a>
                                 </li>
                                 <li>
-                                    <a href="login.html">Interest2</a>
+                                    <a href="login.html">Group</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
