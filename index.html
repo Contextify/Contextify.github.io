@@ -39,7 +39,7 @@
               console.log(JSON.stringify(data));
 
             document.getElementById("CurrentState").innerHTML = data.State;
-		    loadImage("currentStateImg",data.State);
+		   // loadImage("currentStateImg",data.State);
                }
 
 			   });
@@ -78,7 +78,7 @@ console.log("currentdate"+currentdate);
 
             document.getElementById("predCurrentState").innerHTML = result["CurrentState"];
             document.getElementById("predNextState").innerHTML = result["NextState"];
-		    loadImage("predCurrentStateImg",result["CurrentState"]);
+		   // loadImage("predCurrentStateImg",result["CurrentState"]);
             //$("#predCurrentStateImg").addClass("glyphicon glyphicon-home huge"); // need to remove this
                }
 
